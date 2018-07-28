@@ -5,7 +5,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Hello World!
+        <label>Qty:
+          <input />
+        </label>
+        <label>Desc:
+          <input />
+        </label>
+        <button> 
+          Save this
+        </button>
       </div>
     );
   }
