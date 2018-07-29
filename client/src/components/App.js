@@ -5,7 +5,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      unit: "tsp"
+      unit: "tsp",
+      userUnit: "tsp"
     };
   }
 
@@ -30,13 +31,33 @@ class App extends Component {
           <input onChange={this.handleDesc} />
         </label>
         <button onClick={this.handleSave}>Save this</button>
+        <div>
+          <label>
+            View Ingredients as:
+            <select onChange={this.handleUserUnit}>
+              <option value="tsp">tsp</option>
+              <option value="tbsp">tbsp</option>
+              <option value="cup">cup</option>
+              <option value="ml">ml</option>
+            </select>
+          </label>
+          <ul>
+            <li>
+              {this.handleUserConversion()} {this.state.userUnit}{" "}
+              {this.state.desc}
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
 
   handleQty = e => {
     const qty = e.target.value;
-    const measurement = this.handleConversion(e.target.value, this.state.unit);
+    const measurement = this.handleMlConversion(
+      e.target.value,
+      this.state.unit
+    );
 
     this.setState({
       qty,
@@ -45,7 +66,7 @@ class App extends Component {
   };
 
   handleUnit = e => {
-    const measurement = this.handleConversion(this.state.qty, e.target.value);
+    const measurement = this.handleMlConversion(this.state.qty, e.target.value);
 
     this.setState({
       measurement,
@@ -63,7 +84,28 @@ class App extends Component {
     alert("yo");
   };
 
-  handleConversion = (qty, unit) => {
+  handleUserUnit = e => {
+    this.setState({
+      userUnit: e.target.value
+    });
+  };
+
+  handleUserConversion = () => {
+    switch (this.state.userUnit) {
+      case "tsp":
+        return Math.floor(this.state.measurement * 0.20288);
+      case "tbsp":
+        return Math.floor(this.state.measurement * 0.067628);
+      case "cup":
+        return (this.state.measurement * 0.0042268).toFixed(2);
+      case "ml":
+        return this.state.measurement;
+      default:
+        console.log("oops");
+    }
+  };
+
+  handleMlConversion = (qty, unit) => {
     switch (unit) {
       case "tsp":
         return qty / 0.20288;
