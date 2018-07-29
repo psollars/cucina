@@ -35,13 +35,20 @@ class App extends Component {
   }
 
   handleQty = e => {
+    const qty = e.target.value;
+    const measurement = this.handleConversion(e.target.value, this.state.unit);
+
     this.setState({
-      qty: e.target.value
+      qty,
+      measurement
     });
   };
 
   handleUnit = e => {
+    const measurement = this.handleConversion(this.state.qty, e.target.value);
+
     this.setState({
+      measurement,
       unit: e.target.value
     });
   };
@@ -54,6 +61,21 @@ class App extends Component {
 
   handleSave = () => {
     alert("yo");
+  };
+
+  handleConversion = (qty, unit) => {
+    switch (unit) {
+      case "tsp":
+        return qty / 0.20288;
+      case "tbsp":
+        return qty / 0.067628;
+      case "cup":
+        return qty / 0.0042268;
+      case "ml":
+        return qty;
+      default:
+        console.log("oops");
+    }
   };
 }
 
