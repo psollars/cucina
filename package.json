@@ -1,0 +1,19 @@
+{
+  "name": "cusuine",
+  "version": "0.1.0",
+  "main": "server.js",
+  "author": "Patrick Sollars <pjsollars@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.2",
+    "nodemon": "^1.12.1",
+    "pg": "^7.4.3"
+  },
+  "scripts": {
+    "start": "nodemon",
+    "heroku-postbuild": "cd client && yarn install && yarn build"
+  },
+  "proxy": "http://localhost:5000"
+}
