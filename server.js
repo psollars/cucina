@@ -1,19 +1,21 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const orm = require("./data/orm");
 const PORT = process.env.PORT || 5000;
 
 app.use(express.static("client/build"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-app.post("/api/v1/save-item", (req, res) => {
-  console.log(req.body);
-  const newItem = req.body;
-  const dbResult = orm.create(newItem, "ingredient");
-
-  dbResult.then(result => {
-    res.status(201);
-    res.send("SUCCESS");
-  });
+app.post("/api/v1/ingredient", async (req, res) => {
+  try {
+    const body = req.body;
+    const dbResult = await orm.createIngredient(body.ingredient);
+    res.json(dbResult);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 app.listen(PORT, () => {

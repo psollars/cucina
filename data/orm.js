@@ -12,7 +12,9 @@ const dbConfig = {
   host: dbUrlParams.hostname,
   port: dbUrlParams.port,
   database: dbUrlParams.pathname.split("/")[1],
-  ssl: false
+  ssl: false,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000
 };
 
 const pool = new pg.Pool(dbConfig);
@@ -23,15 +25,16 @@ const orm = {
     return pool.query(sql);
   },
 
-  create: function(newItem, tableName) {
-    console.log("create function >>", newItem, tableName);
-    const sql = `INSERT INTO ${tableName} (
+  createIngredient: function(ingredient) {
+    const sql = `INSERT INTO ingredient (
                              Name, 
                              Quantity)
                       VALUES (
                              $1, 
                              $2);`;
-    const values = [newItem.desc, newItem.qty];
+
+    const values = [ingredient.description, ingredient.quantity];
+
     return pool.query(sql, values);
   }
 };
