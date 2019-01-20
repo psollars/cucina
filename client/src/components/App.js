@@ -15,7 +15,7 @@ class App extends Component {
       <div className="App">
         <label>
           Qty:
-          <input onChange={this.handleQty} />
+          <input onChange={this.handleQuantity} />
         </label>
         <label>
           Unit:
@@ -27,8 +27,8 @@ class App extends Component {
           </select>
         </label>
         <label>
-          Desc:
-          <input onChange={this.handleDesc} />
+          Description:
+          <input onChange={this.handleDescription} />
         </label>
         <button onClick={this.handleSave}>Save this</button>
         <div>
@@ -44,7 +44,7 @@ class App extends Component {
           <ul>
             <li>
               {this.handleUserConversion()} {this.state.userUnit}{" "}
-              {this.state.desc}
+              {this.state.Description}
             </li>
           </ul>
         </div>
@@ -52,21 +52,24 @@ class App extends Component {
     );
   }
 
-  handleQty = e => {
-    const qty = e.target.value;
+  handleQuantity = e => {
+    const quantity = e.target.value;
     const measurement = this.handleMlConversion(
       e.target.value,
       this.state.unit
     );
 
     this.setState({
-      qty,
+      quantity,
       measurement
     });
   };
 
   handleUnit = e => {
-    const measurement = this.handleMlConversion(this.state.qty, e.target.value);
+    const measurement = this.handleMlConversion(
+      this.state.quantity,
+      e.target.value
+    );
 
     this.setState({
       measurement,
@@ -74,18 +77,26 @@ class App extends Component {
     });
   };
 
-  handleDesc = e => {
+  handleDescription = e => {
     this.setState({
-      desc: e.target.value
+      description: e.target.value
     });
   };
 
   handleSave = () => {
-    const request = new Request("/api/v1/save-item", {
+    const request = new Request("/api/v1/ingredient", {
       method: "POST",
-      body: { ingredient: this.state }
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ingredient: this.state })
     });
-    fetch(request).then(alert("yo"));
+
+    fetch(request)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   handleUserUnit = e => {
