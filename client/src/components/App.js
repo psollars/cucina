@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Ingredient from "./Ingredient";
 import "./../styles/App.css";
 
 class App extends Component {
@@ -13,23 +14,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <label>
-          Qty:
-          <input onChange={this.handleQuantity} />
-        </label>
-        <label>
-          Unit:
-          <select onChange={this.handleUnit}>
-            <option value="tsp">tsp</option>
-            <option value="tbsp">tbsp</option>
-            <option value="cup">cup</option>
-            <option value="ml">ml</option>
-          </select>
-        </label>
-        <label>
-          Description:
-          <input onChange={this.handleDescription} />
-        </label>
+        <div>
+          <Ingredient />
+        </div>
         <button onClick={this.handleSave}>Save this</button>
         <div>
           <label>
@@ -74,12 +61,6 @@ class App extends Component {
     this.setState({
       measurement,
       unit: e.target.value
-    });
-  };
-
-  handleDescription = e => {
-    this.setState({
-      description: e.target.value
     });
   };
 
