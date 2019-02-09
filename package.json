@@ -12,7 +12,7 @@
     "pg": "^7.4.3"
   },
   "scripts": {
-    "start": "nodemon ./server/server.js",
+    "start": "nodemon ./server.js",
     "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "proxy": "http://localhost:5000"
