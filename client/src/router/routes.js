@@ -1,5 +1,5 @@
 import Recipe from "../components/Recipe";
-import Test from "./../components/test";
+import Test from "../components/Test";
 
 export default [
   { path: "/recipe", component: Recipe },

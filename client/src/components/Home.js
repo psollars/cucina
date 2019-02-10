@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
+import { Button } from "@material-ui/core";
 import Link from "./Link";
 
 export default function() {
@@ -7,11 +7,11 @@ export default function() {
     <>
       <h1>Home</h1>
       <Link to="/recipe">
-        <Button color="primary">Recipe</Button>
+        <Button>Recipe</Button>
       </Link>
-      <Button>
-        <Link to="/test">Test Component</Link>
-      </Button>
+      <Link to="/test">
+        <Button>Test Component</Button>
+      </Link>
     </>
   );
 }

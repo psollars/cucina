@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import routes from "./routes";
+import Routes from "./Routes";
 
 import Home from "./../components/Home";
 
@@ -9,7 +9,7 @@ export default function() {
     <Router>
       <>
         <Route key={"home"} exact path={"/"} component={Home} />
-        {routes.map(route => {
+        {Routes.map(route => {
           return (
             <Route
               key={route.path}
