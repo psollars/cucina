@@ -1,5 +1,5 @@
 {
-  "name": "cusuine",
+  "name": "cucina-recipes",
   "version": "0.1.0",
   "main": "server.js",
   "author": "Patrick Sollars <pjsollars@gmail.com>",
@@ -7,9 +7,9 @@
   "private": true,
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.2",
-    "nodemon": "^1.12.1",
-    "pg": "^7.4.3"
+    "express": "^4.16.4",
+    "nodemon": "^1.18.10",
+    "pg": "^7.8.0"
   },
   "scripts": {
     "start": "nodemon ./server.js",
