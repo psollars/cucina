@@ -19,24 +19,4 @@ const dbConfig = {
 
 const pool = new pg.Pool(dbConfig);
 
-const orm = {
-  readAll: function(tableName) {
-    const sql = `SELECT * FROM ${tableName};`;
-    return pool.query(sql);
-  },
-
-  createIngredient: function(ingredient) {
-    const sql = `INSERT INTO ingredient (
-                             Name, 
-                             Quantity)
-                      VALUES (
-                             $1, 
-                             $2);`;
-
-    const values = [ingredient.description, ingredient.quantity];
-
-    return pool.query(sql, values);
-  }
-};
-
-module.exports = orm;
+module.exports = pool;

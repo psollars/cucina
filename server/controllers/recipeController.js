@@ -1,40 +1,31 @@
-const orm = require("./../repositories/orm");
+const ingredientsRepository = require("./../repositories/ingredientsRepository");
 
 const recipeController = {
-  param: (req, res) => {
-    console.log(req.params);
-    console.log(req.query);
+  getAllIngredients: async (req, res, next) => {
     try {
-      res.json("params yo");
-    } catch (error) {
-      res.json(error);
+      const dbResult = await ingredientsRepository.getAllIngredients();
+      res.json(dbResult.rows);
+    } catch (err) {
+      console.error(err);
+      next(err);
+    }
+  },
+
+  createIngredient: async (req, res, next) => {
+    try {
+      const body = req.body;
+      const dbResult = await ingredientsRepository.createIngredient(
+        body.ingredient
+      );
+      res.json(dbResult);
+    } catch (err) {
+      console.error(err);
+      next(err);
     }
   },
 
   test: (req, res) => {
-    try {
-      res.json("yo from the controller");
-    } catch (error) {
-      res.json(error);
-    }
-  },
-
-  test2: (req, res) => {
-    try {
-      res.json("post from the controller");
-    } catch (error) {
-      res.json(error);
-    }
-  },
-
-  createIngredient: async (req, res) => {
-    try {
-      const body = req.body;
-      const dbResult = await orm.createIngredient(body.ingredient);
-      res.json(dbResult);
-    } catch (error) {
-      res.json(error);
-    }
+    res.json(ingredientsRepository.doStuff());
   }
 };
 
