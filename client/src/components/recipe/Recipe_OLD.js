@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Ingredient from "./Ingredient";
+import Ingredient from "../ingredient/Ingredient";
 import { Button } from "@material-ui/core";
 
 export default class Recipe extends Component {

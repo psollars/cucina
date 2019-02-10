@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@material-ui/core";
-import Link from "./Link";
+import Link from "./utilities/Link";
 
 export default function() {
   return (

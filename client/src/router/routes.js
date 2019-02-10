@@ -1,4 +1,4 @@
-import Recipe from "../components/Recipe";
+import Recipe from "../components/recipe/Recipe";
 import Test from "../components/Test";
 
 export default [

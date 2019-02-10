@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Ingredient() {
+export default function() {
   const [quantity, setQuantity] = useState(0);
   const [unit, setUnit] = useState("tbsp");
   const [description, setDescription] = useState("");
