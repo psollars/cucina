@@ -1,12 +1,12 @@
 import React from "react";
-import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
-import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
+import { Button } from "@material-ui/core";
 
-const localTheme = createMuiTheme();
+export default function(props) {
+  const { history } = props;
 
-export default function Test(props) {
   return (
-    <MuiThemeProvider theme={localTheme}>
+    <>
+      <Button onClick={() => history.goBack()}>Back</Button>
       <h1>test</h1>
       <h2>test</h2>
       <h3>test</h3>
@@ -14,6 +14,6 @@ export default function Test(props) {
       <h5>test</h5>
       <h6>test</h6>
       <p>test</p>
-    </MuiThemeProvider>
+    </>
   );
 }

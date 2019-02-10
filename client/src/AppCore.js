@@ -4,14 +4,12 @@ import MuiThemeProvider from "@material-ui/core/styles/MuiThemeProvider";
 import Theme from "./styles/Theme";
 import Styles from "./styles/styles.css";
 
-import Root from "./components/Root";
+import Router from "./router/Router";
 
-function AppCore() {
+export default function() {
   return (
-    <MuiThemeProvider theme={Theme} sheetsManager={Styles}>
-      <Root />
-    </MuiThemeProvider>
+    // <MuiThemeProvider theme={Theme} sheetsManager={Styles}>
+    <Router />
+    // </MuiThemeProvider>
   );
 }
-
-export default AppCore;
