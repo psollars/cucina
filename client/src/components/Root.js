@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import Ingredient from "./Ingredient";
-import "./../styles/App.css";
 
-class App extends Component {
+class Root extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,7 +11,15 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <>
+        <h1>test</h1>
+        <h2>test</h2>
+        <h3>test</h3>
+        <h4>test</h4>
+        <h5>test</h5>
+        <h6>test</h6>
+        <p>test</p>
+        {/*
         <div>
           <Ingredient />
         </div>
@@ -34,8 +40,8 @@ class App extends Component {
               {this.state.Description}
             </li>
           </ul>
-        </div>
-      </div>
+        </div> */}
+      </>
     );
   }
 
@@ -117,4 +123,4 @@ class App extends Component {
   };
 }
 
-export default App;
+export default Root;
