@@ -5,6 +5,10 @@
   "author": "Patrick Sollars <pjsollars@gmail.com>",
   "license": "MIT",
   "private": true,
+  "engines": {
+    "node": "11.1.0",
+    "yarn": "1.13.0"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
