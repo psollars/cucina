@@ -1,32 +1,19 @@
+const asyncMiddleware = require("./../utilities/asyncMiddleware");
 const ingredientsRepository = require("./../repositories/ingredientsRepository");
 
 const recipeController = {
-  getAllIngredients: async (req, res, next) => {
-    try {
-      const dbResult = await ingredientsRepository.getAllIngredients();
-      res.json(dbResult.rows);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  },
+  getAllIngredients: asyncMiddleware(async (req, res, next) => {
+    const dbResult = await ingredientsRepository.getAllIngredients();
+    res.json(dbResult.rows);
+  }),
 
-  createIngredient: async (req, res, next) => {
-    try {
-      const body = req.body;
-      const dbResult = await ingredientsRepository.createIngredient(
-        body.ingredient
-      );
-      res.json(dbResult);
-    } catch (err) {
-      console.error(err);
-      next(err);
-    }
-  },
-
-  test: (req, res) => {
-    res.json(ingredientsRepository.doStuff());
-  }
+  createIngredient: asyncMiddleware(async (req, res, next) => {
+    const body = req.body;
+    const dbResult = await ingredientsRepository.createIngredient(
+      body.ingredient
+    );
+    res.json(dbResult);
+  })
 };
 
 module.exports = recipeController;
