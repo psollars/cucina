@@ -1,22 +1,21 @@
 import React from "react";
+import { useRetrieveAllRecipes } from "./../../hooks/Hooks";
 
-import Recipe from "./Recipe";
+import RecipePreview from "./RecipePreview";
 
-export default function(props) {
-  let { recipes } = props;
-  recipes = recipes ? recipes : [];
+export default function() {
+  const recipes = useRetrieveAllRecipes();
 
   return (
     <>
       <h1>Recipes</h1>
       {recipes.map(recipe => {
         return (
-          <Recipe
+          <RecipePreview
             key={recipe.id}
+            id={recipe.id}
             title={recipe.title}
             description={recipe.description}
-            ingredients={recipe.ingredients}
-            instructions={recipe.instructions}
           />
         );
       })}

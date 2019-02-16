@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from "react";
 import { Reducer } from "./../reducers/Reducer";
-import { receiveRecipe } from "./../actions/Actions";
-import { fetchRecipeById } from "./../requests/Requests";
+import { receiveRecipe, receiveRecipes } from "./../actions/Actions";
+import { fetchRecipeById, fetchAllRecipes } from "./../requests/Requests";
 
 export function useRetrieveRecipeById(id) {
   const [state, dispatch] = useReducer(Reducer, [
@@ -20,4 +20,16 @@ export function useRetrieveRecipeById(id) {
   }, []);
 
   return state[0];
+}
+
+export function useRetrieveAllRecipes() {
+  const [state, dispatch] = useReducer(Reducer, []);
+
+  useEffect(() => {
+    fetchAllRecipes().then(data => {
+      dispatch(receiveRecipes(data));
+    });
+  }, []);
+
+  return state;
 }
