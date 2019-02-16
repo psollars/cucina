@@ -1,8 +1,9 @@
 const router = require("express").Router();
 
 const recipeController = require("./recipeController");
-router.get("/ingredients", recipeController.getAllIngredients);
-router.post("/ingredient", recipeController.createIngredient);
+router.post("/recipe", recipeController.createRecipe);
+// router.get("/ingredients", recipeController.getAllIngredients);
+// router.post("/ingredient", recipeController.createIngredient);
 
 // manual testing
 const testController = require("./testController");
