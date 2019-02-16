@@ -15,13 +15,15 @@ const recipeService = {
       recipeId
     );
 
-    return {
-      id: recipe.id,
-      title: recipe.title,
-      description: recipe.description,
-      ingredients: ingredientsResult.rows,
-      instructions: instructionsResult.rows
-    };
+    return [
+      {
+        id: recipe.id,
+        title: recipe.title,
+        description: recipe.description,
+        ingredients: ingredientsResult.rows,
+        instructions: instructionsResult.rows
+      }
+    ];
   },
 
   createRecipe: async body => {
