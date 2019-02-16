@@ -3,7 +3,8 @@ const pg = require("./orm");
 const recipesRepository = {
   retrieveAllRecipes: function() {
     const sql = `
-      SELECT title,
+      SELECT id,
+             title,
              description
         FROM recipe
        WHERE public = true;`;

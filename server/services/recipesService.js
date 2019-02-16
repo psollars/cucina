@@ -3,6 +3,12 @@ const ingredientsRepository = require("../repositories/ingredientsRepository");
 const instructionsRepository = require("../repositories/instructionsRepository");
 
 const recipeService = {
+  retrieveAllRecipes: async () => {
+    const recipesResult = await recipesRepository.retrieveAllRecipes();
+
+    return recipesResult.rows;
+  },
+
   retrieveRecipe: async recipeId => {
     const recipeResult = await recipesRepository.retrieveRecipe(recipeId);
     const recipe = recipeResult.rows[0];
