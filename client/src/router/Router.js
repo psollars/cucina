@@ -1,12 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Routes from "./routes";
-
+import { BrowserRouter, Route } from "react-router-dom";
+import Routes from "./Routes";
 import Home from "../components/Home";
 
 export default function() {
   return (
-    <Router>
+    <BrowserRouter>
       <>
         <Route key={"home"} exact path={"/"} component={Home} />
         {Routes.map(route => {
@@ -19,6 +18,6 @@ export default function() {
           );
         })}
       </>
-    </Router>
+    </BrowserRouter>
   );
 }

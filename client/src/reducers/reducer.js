@@ -1,18 +1,14 @@
-import { RETRIEVE_RECIPES } from "../actions/actionTypes";
+import { RECEIVE_RECIPES, RECEIVE_RECIPE } from "../actions/ActionTypes";
 
-const INITIAL_STATE = {
-  recipes: []
-};
+const INITIAL_STATE = [];
 
-export default function(state = INITIAL_STATE, action) {
+export function Reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case RETRIEVE_RECIPES:
-      return retrieveRecipes(state, action);
+    case RECEIVE_RECIPES:
+      return [...action.data];
+    case RECEIVE_RECIPE:
+      return [...action.data];
     default:
-      return state;
+      throw new Error();
   }
-}
-
-function retrieveRecipes(state, action) {
-  return { ...state, recipes: action.recipes };
 }
