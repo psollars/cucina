@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS ingredient (
   description VARCHAR(256) NOT NULL,
   quantity    VARCHAR(64)  NOT NULL,
   unit        VARCHAR(64)  NULL,
-  optional    BOOLEAN      NULL,
+  optional    BOOLEAN      NULL              DEFAULT FALSE,
   created_at  TIMESTAMP    WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   updated_at  TIMESTAMP    WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT ingredient_id_recipe_id_fkey FOREIGN KEY (recipe_id)

@@ -1,6 +1,19 @@
 const pg = require("./orm");
 
 const instructionsRepository = {
+  retrieveInstructionsByRecipeId: function(recipeId) {
+    const sql = `
+      SELECT id,
+             sort_order AS order,
+             instruction
+        FROM instruction
+       WHERE recipe_id = $1;`;
+
+    const values = [recipeId];
+
+    return pg.query(sql, values);
+  },
+
   createInstruction: function(recipeId, instruction) {
     const sql = `
       INSERT INTO instruction (

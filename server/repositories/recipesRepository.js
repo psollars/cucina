@@ -1,13 +1,27 @@
 const pg = require("./orm");
 
 const recipesRepository = {
-  getAllRecipes: function() {
+  retrieveAllRecipes: function() {
     const sql = `
       SELECT title,
              description
         FROM recipe
        WHERE public = true;`;
+
     return pg.query(sql);
+  },
+
+  retrieveRecipe: function(recipeId) {
+    const sql = `
+      SELECT id,
+             title,
+             description
+        FROM recipe
+       WHERE id = $1;`;
+
+    const values = [recipeId];
+
+    return pg.query(sql, values);
   },
 
   createRecipe: function(recipe) {
