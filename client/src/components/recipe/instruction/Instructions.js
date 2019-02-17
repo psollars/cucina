@@ -8,14 +8,16 @@ export default function(props) {
     <>
       <h3>Instructions</h3>
       <ul>
-        {instructions.map(instruction => {
-          return (
-            <Instruction
-              key={instruction.order}
-              instruction={instruction.instruction}
-            />
-          );
-        })}
+        {instructions
+          .sort((i, j) => i.order - j.order)
+          .map(instruction => {
+            return (
+              <Instruction
+                key={instruction.order}
+                instruction={instruction.instruction}
+              />
+            );
+          })}
       </ul>
     </>
   );
