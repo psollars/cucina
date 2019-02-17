@@ -1,10 +1,10 @@
-import React from "react";
-import { useRetrieveAllRecipes } from "./../../hooks/Hooks";
+import React, { useContext } from "react";
+import { Context } from "./../../providers/AppProvider";
 
 import RecipePreview from "./RecipePreview";
 
 export default function() {
-  const recipes = useRetrieveAllRecipes();
+  const { recipes } = useContext(Context);
 
   return (
     <>

@@ -12,8 +12,8 @@ export default function(props) {
   const {
     match: { params }
   } = props;
-  const state = useRetrieveRecipeById(params.id);
-  const { title, description, ingredients, instructions } = state;
+  const recipe = useRetrieveRecipeById(params.id);
+  const { title, description, ingredients, instructions } = recipe;
 
   return (
     <>
