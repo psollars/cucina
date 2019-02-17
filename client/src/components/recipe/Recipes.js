@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Context } from "./../../providers/AppProvider";
-
 import RecipePreview from "./RecipePreview";
 
 export default function() {

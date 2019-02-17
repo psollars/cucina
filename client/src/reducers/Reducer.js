@@ -1,6 +1,6 @@
 import { RECEIVE_RECIPES, RECEIVE_RECIPE } from "../actions/ActionTypes";
 
-const INITIAL_STATE = [];
+const INITIAL_STATE = {};
 
 export function Reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
