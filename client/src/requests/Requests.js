@@ -1,22 +1,16 @@
-const API_BASE_PATH = "http://localhost:5000/api/v1";
+const API_V1 = "/api/v1";
 
 export async function fetchRecipeById(id) {
-  const request = new Request(`${API_BASE_PATH}/recipe/${id}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
+  const request = new Request(`${API_V1}/recipe/${id}`, {
+    method: "GET"
   });
 
   return await fetch(request).then(response => response.json());
 }
 
 export async function fetchAllRecipes() {
-  const request = new Request(`${API_BASE_PATH}/recipes`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json"
-    }
+  const request = new Request(`${API_V1}/recipes`, {
+    method: "GET"
   });
 
   return await fetch(request).then(response => response.json());
